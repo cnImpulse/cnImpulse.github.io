@@ -57,7 +57,7 @@
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":200,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0xjtf7eLjK5UPXxfq4HT9U8W-gzGzoHsz","app_key":"gtJyHdsu19koRUu8yChOpDnq","server_url":"https://0xjtf7el.lc-cn-n1-shared.com"}}};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":200,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":1},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"0xjtf7eLjK5UPXxfq4HT9U8W-gzGzoHsz","app_key":"gtJyHdsu19koRUu8yChOpDnq","server_url":"https://0xjtf7el.lc-cn-n1-shared.com"}}};
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      496 字
+      560 字
     </span>
   
 
@@ -246,14 +246,15 @@
               <h2 id="什么是SRPG"><a href="#什么是SRPG" class="headerlink" title="什么是SRPG"></a>什么是SRPG</h2><blockquote>
 <p>战略角色扮演游戏（Strategy Role-Playing Game），日本又称角色扮演模拟游戏，简称SRPG或RSLG，最大特性在于战斗系统中拥有类似战略游戏的游戏方式，以及具有类似角色扮演游戏的剧情推演及人物成长。</p>
 </blockquote>
-<p>我玩过的最优秀的SRPG优秀还要数火焰纹章系列<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="火焰纹章wiki
+<a id="more"></a>
+
+<p>我玩过的最优秀的SRPG游戏还要数: 火焰纹章系列<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="火焰纹章wiki
 ">[1]</span></a></sup><br>玩家控制多个角色与敌人在一个地图上展开战斗。把角色抽象成棋子来模拟一场场战役。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.0.6/images/SRPG/01.jpg" srcset="/img/loading.gif" alt="image"><br>火焰纹章之烈火之剑 2003年发行</p>
-<p><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.0.6/images/SRPG/02.jpg" srcset="/img/loading.gif" alt="image"><br>战律 2019年发行</p>
+<p>一些SRPG游戏截图:<br><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.0.6/images/SRPG/01.jpg" srcset="/img/loading.gif" alt="火焰纹章之烈火之剑 2003年发行"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.0.6/images/SRPG/02.jpg" srcset="/img/loading.gif" alt="战律 2019年发行"></p>
 <hr>
 <h1 id="开发计划"><a href="#开发计划" class="headerlink" title="开发计划"></a>开发计划</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我决定参考玩过的SRPG游戏，使用Unity3D开发一款战棋类SRPG游戏。<br>核心系统: 战棋类战斗系统<br>游戏主题: 仙侠风格<br>但是不会画画，所以开发过程中一切从简。😭</p>
-<p>##开发工具</p>
-<ul>
+<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><ul>
 <li>游戏引擎: <a target="_blank" rel="noopener" href="https://unity.cn/releases">Unity3D</a></li>
 <li>绘画软件: <a target="_blank" rel="noopener" href="https://www.aseprite.org/">Aseprite</a></li>
 <li>版本控制: <a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a></li>
@@ -267,10 +268,11 @@
 <li>实现战斗全过程</li>
 <li>后面还没想好……</li>
 </ol>
-<p>实现原则: 数据和显示分离 ，地图数据和战斗队伍数据不能耦合<br>对于优化: 有优化思路但是实现比较复杂或者麻烦的时候可以先把优化点和思路记下，先让程序跑起来<br>对于美术: 先不想着多好多美术效果，怎么简单怎么来，主要目标是游戏可玩。</p>
+<p>实现原则: 数据和显示分离 ，地图数据和战斗队伍数据不能耦合<br>对于优化: 有优化思路但是实现比较复杂的可以先把优化点和思路记下，先让程序跑起来<br>对于美术: 先不想着多好多美术效果，怎么简单怎么来，主要目标是游戏可玩。</p>
 <h2 id="博客更新"><a href="#博客更新" class="headerlink" title="博客更新"></a>博客更新</h2><p>在每一阶段完成之后,我都会抽时间出来写一篇教程来总结前面所做的工作。<br>教程不会大段贴代码,我会尽力描述我的实现思路和想法。</p>
 <p>代码可以直接看源码,偷偷说一下～ 我没写注释(￣∇￣)<br><a target="_blank" rel="noopener" href="https://github.com/impulses-1/SRPG">项目源码GitHub</a></p>
 <p>先放一张现阶段的截图吧,还不可以玩 o(╯□╰)o<br><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.0.6/images/SRPG/03.png" srcset="/img/loading.gif" alt="image"></p>
+<h2 id="絮叨"><a href="#絮叨" class="headerlink" title="絮叨"></a>絮叨</h2><p>如果觉得我的博客或者项目对于学习有帮助的话，欢迎在评论区留言，说几句废话也比冷冷清清强嘛。<br>如果我的博客哪里有错误或者错别字，一定要在评论区提醒我，博主有强迫症，肯定火速订正。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E7%81%AB%E7%84%B0%E4%B9%8B%E7%BA%B9%E7%AB%A0%E7%B3%BB%E5%88%97">火焰纹章wiki</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
             </div>
