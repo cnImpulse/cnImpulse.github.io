@@ -19,7 +19,7 @@
   <meta name="description" content="">
   <meta name="author" content="Impulse">
   <meta name="keywords" content="">
-  <title>C++的多态 - GameDesign</title>
+  <title>C++的多态和虚函数原理 - GameDesign</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -164,7 +164,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="C++的多态">
+            <span class="h2" id="subtitle" title="C++的多态和虚函数原理">
               
             </span>
 
@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.2k 字
+      2.7k 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      27
+      32
        分钟
     </span>
   
@@ -234,7 +234,7 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">C++的多态</h1>
+            <h1 style="display: none">C++的多态和虚函数原理</h1>
             
               <p class="note note-info">
                 
@@ -293,9 +293,9 @@
 <blockquote>
 <p>不知道怎么攻击<br>不知道怎么攻击<br>不知道怎么攻击</p>
 </blockquote>
-<p>因为weapon找不派生类的Attack()函数,他知道自己的Attack()。</p>
+<p>因为weapon找不派生类的Attack()函数,它只知道它自己的Attack()。</p>
 <p>现在我们用上虚函数,就是在基类需要声明为虚函数的函数前面加上 <strong>virtual</strong>关键字。<br>进行重写: 在具体派生类声明一个同函数签名的函数,<strong>并用override</strong>修饰。可以不加,建议加上。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Weapon</span>&#123;</span> <span class="hljs-comment">//武器基类</span><br>    <span class="hljs-keyword">protected</span>:<br>        <span class="hljs-keyword">int</span> atk;<br>    <span class="hljs-keyword">public</span>:<br>        Weapon() &#123;atk = <span class="hljs-number">1</span>;&#125;<br>        <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Attack</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">&quot;不知道怎么攻击\n&quot;</span>;&#125;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Knife</span> :</span> <span class="hljs-keyword">public</span> Weapon&#123;<br>    <span class="hljs-keyword">public</span>:<br>        Knife() &#123;atk = <span class="hljs-number">2</span>;&#125;<br>        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Attack</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>&#123;<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">&quot;劈砍\n&quot;</span>;&#125;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Spear</span> :</span> <span class="hljs-keyword">public</span> Weapon&#123;<br>    <span class="hljs-keyword">public</span>:<br>        Spear() &#123;atk = <span class="hljs-number">3</span>;&#125;<br>        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Attack</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>&#123;<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">&quot;刺击\n&quot;</span>;&#125;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cudgel</span> :</span> <span class="hljs-keyword">public</span> Weapon&#123;<br>    <span class="hljs-keyword">public</span>:<br>        Cudgel() &#123;atk = <span class="hljs-number">4</span>;&#125;<br>        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Attack</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>&#123;<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">&quot;砸\n&quot;</span>;&#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    Weapon *weapon;<br>    Knife knife;<br>    Spear spear;<br>    Cudgel cudgel;<br><br>    weapon = &amp;knife;<br>    weapon-&gt;Attack();<br>    weapon = &amp;spear;<br>    weapon-&gt;Attack();<br>    weapon = &amp;cudgel;<br>    weapon-&gt;Attack();<br>&#125;<br></code></pre></div></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-comment">// v0.3</span><br><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;iostream&gt;</span></span><br><span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Weapon</span>&#123;</span> <span class="hljs-comment">//武器基类</span><br>    <span class="hljs-keyword">protected</span>:<br>        <span class="hljs-keyword">int</span> atk;<br>    <span class="hljs-keyword">public</span>:<br>        Weapon() &#123;atk = <span class="hljs-number">1</span>;&#125;<br>        <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Attack</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">&quot;不知道怎么攻击\n&quot;</span>;&#125;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Knife</span> :</span> <span class="hljs-keyword">public</span> Weapon&#123;<br>    <span class="hljs-keyword">public</span>:<br>        Knife() &#123;atk = <span class="hljs-number">2</span>;&#125;<br>        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Attack</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>&#123;<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">&quot;劈砍\n&quot;</span>;&#125;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Spear</span> :</span> <span class="hljs-keyword">public</span> Weapon&#123;<br>    <span class="hljs-keyword">public</span>:<br>        Spear() &#123;atk = <span class="hljs-number">3</span>;&#125;<br>        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Attack</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>&#123;<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">&quot;刺击\n&quot;</span>;&#125;<br>&#125;;<br><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cudgel</span> :</span> <span class="hljs-keyword">public</span> Weapon&#123;<br>    <span class="hljs-keyword">public</span>:<br>        Cudgel() &#123;atk = <span class="hljs-number">4</span>;&#125;<br>        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Attack</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>&#123;<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">&quot;砸\n&quot;</span>;&#125;<br>&#125;;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>&#123;<br>    Weapon *weapon;<br>    Knife knife;<br>    Spear spear;<br>    Cudgel cudgel;<br><br>    weapon = &amp;knife;<br>    weapon-&gt;Attack();<br>    weapon = &amp;spear;<br>    weapon-&gt;Attack();<br>    weapon = &amp;cudgel;<br>    weapon-&gt;Attack();<br>&#125;<br></code></pre></div></td></tr></table></figure>
 <p>结果:</p>
 <blockquote>
 <p>劈砍<br>刺击<br>砸</p>
@@ -329,7 +329,35 @@
 <figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Knife</span> :</span> <span class="hljs-keyword">public</span> Weapon&#123;<br>    <span class="hljs-keyword">public</span>:<br>        Knife() &#123;atk = <span class="hljs-number">2</span>;&#125;<br>        <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Attack</span><span class="hljs-params">()</span> <span class="hljs-keyword">override</span> </span>&#123;<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">&quot;劈砍\n&quot;</span>;&#125;<br>        <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-title">Bleed</span><span class="hljs-params">()</span> </span>&#123;<span class="hljs-built_in">cout</span>&lt;&lt;<span class="hljs-string">&quot;附带流血效果\n&quot;</span>;&#125;<br>&#125;;<br></code></pre></div></td></tr></table></figure>
 <p><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.0.9/images/C++/4.png" srcset="/img/loading.gif" alt="重写之后的Knife的虚表"></p>
 <p>我们发现重写之后,原来指向基类Attack()的函数指针被覆盖了,变成了指向自己重写之后的Attack()函数。</p>
-<h2 id="虚函数使用建议及解释"><a href="#虚函数使用建议及解释" class="headerlink" title="虚函数使用建议及解释"></a>虚函数使用建议及解释</h2><h2 id="纯虚函数和抽象类"><a href="#纯虚函数和抽象类" class="headerlink" title="纯虚函数和抽象类"></a>纯虚函数和抽象类</h2><h2 id="重载和重写"><a href="#重载和重写" class="headerlink" title="重载和重写"></a>重载和重写</h2><hr>
+<h2 id="虚函数使用建议及解释"><a href="#虚函数使用建议及解释" class="headerlink" title="虚函数使用建议及解释"></a>虚函数使用建议及解释</h2><ol>
+<li><p><strong>构造函数</strong>能声明成虚函数吗?</p>
+<blockquote>
+<p>不能！<br>调用构造函数函数时,对象的内存空间还没有确定下来,那么虚指针(vptr)也不存在,无法找到虚表。</p>
+</blockquote>
+</li>
+<li><p>基类的析构函数最好声明为虚函数。</p>
+<blockquote>
+<p>为了防止内存泄漏,当我们用基类的指针delete派生类的内存时,如果基类的析构函数不是虚函数,那么delete操作符只会调用基类的析构函数,如果派生类动态申请了内存就无法释放。</p>
+</blockquote>
+</li>
+</ol>
+<blockquote>
+<p>假如基类析构函数<strong>不是</strong>虚函数: 通过基类指针delete派生类,只调用基类的析构函数。<br>假如基类析构函数<strong>是</strong>虚函数: 通过基类指针delete派生类,先调用派生类的析构函数,然后调用基类的析构函数。</p>
+</blockquote>
+<h2 id="纯虚函数和抽象类"><a href="#纯虚函数和抽象类" class="headerlink" title="纯虚函数和抽象类"></a>纯虚函数和抽象类</h2><blockquote>
+<p>基类声明的虚函数可以不实现,那么该函数就是<strong>纯虚函数</strong>。</p>
+</blockquote>
+<blockquote>
+<p>至少有一个纯虚函数的类就是抽象类,因为纯虚函数没有实现,抽象类是<strong>无法被实例化</strong>的。<br>派生自抽象类的类<strong>必须重写</strong>抽象基类的所有纯虚函数,否则会引发编译错误。</p>
+</blockquote>
+<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Weapon</span>&#123;</span> <span class="hljs-comment">//武器基类</span><br>    <span class="hljs-keyword">protected</span>:<br>        <span class="hljs-keyword">int</span> atk;<br>    <span class="hljs-keyword">public</span>:<br>        Weapon() &#123;atk = <span class="hljs-number">1</span>;&#125;<br>        <span class="hljs-comment">// 纯虚函数的函数体被 &quot;=0;&quot; 代替,表示基类不实现,留给派生类实现。</span><br>        <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Attack</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;<br>&#125;;<br></code></pre></div></td></tr></table></figure>
+<h2 id="重载和重写"><a href="#重载和重写" class="headerlink" title="重载和重写"></a>重载和重写</h2><blockquote>
+<p>重载: 函数名相同,函数的参数个数、参数类型或参数顺序三者中必须至少有一种不同。函数返回值的类型可以相同,也可以不相同。发生在一个类内部。</p>
+</blockquote>
+<blockquote>
+<p>重写: 也叫做覆盖,一般发生在子类和父类继承关系之间。子类重新实现父类中有相同名称和参数的虚函数。</p>
+</blockquote>
+<hr>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%A4%9A%E6%80%81">百度百科-多态</a>
 <a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/cpp-polymorphism.html">菜鸟教程-C++多态</a>
 <a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.cnblogs.com/Mered1th/p/10924545.html#%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3c-%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8">博客-深入理解C++虚函数表</a>
