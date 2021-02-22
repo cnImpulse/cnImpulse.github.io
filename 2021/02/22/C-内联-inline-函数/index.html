@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      998 字
+      937 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      10
        分钟
     </span>
   
@@ -254,8 +254,7 @@
 </blockquote>
 <figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-comment">//判断闰年</span><br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">isLeapYear</span><span class="hljs-params">(<span class="hljs-keyword">int</span> year)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> (year%<span class="hljs-number">4</span>==<span class="hljs-number">0</span>&amp;&amp;year%<span class="hljs-number">100</span>!=<span class="hljs-number">0</span>)||year%<span class="hljs-number">400</span>==<span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">leapYearsCount</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; years)</span></span>&#123;<br>    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;years.size();++i)&#123;<br>        <span class="hljs-keyword">if</span>(isLearYear(years[i])) ++ans;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 <p>这样既可以也函数形式在程序里使用isLeapYear(), 又不用在运行时承担额外开销。</p>
-<h2 id="内联函数优缺点-lt-span-class-”hint–top-hint–rounded”-aria-label-”博客-C-内联函数"><a href="#内联函数优缺点-lt-span-class-”hint–top-hint–rounded”-aria-label-”博客-C-内联函数" class="headerlink" title="内联函数优缺点&lt;span class=”hint–top hint–rounded” aria-label=”博客-C++内联函数"></a>内联函数优缺点<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote">&lt;span class=”hint–top hint–rounded” aria-label=”博客-C++内联函数</h2><p>“&gt;[1]</span></a></sup></p>
-<blockquote>
+<h2 id="内联函数优缺点"><a href="#内联函数优缺点" class="headerlink" title="内联函数优缺点"></a>内联函数优缺点</h2><blockquote>
 <p>优点</p>
 <ol>
 <li>它通过避免函数调用所带来的开销来提高你程序的运行速度。</li>
@@ -273,8 +272,7 @@
 <li>有时候内联函数并不受到青睐，比如在嵌入式系统中，嵌入式系统的存储约束可能不允许体积很大的可执行程序。</li>
 </ol>
 </blockquote>
-<h2 id="什么时候函数适合定义为内联-lt-span-class-”hint–top-hint–rounded”-aria-label-”菜鸟教程-C-内联函数"><a href="#什么时候函数适合定义为内联-lt-span-class-”hint–top-hint–rounded”-aria-label-”菜鸟教程-C-内联函数" class="headerlink" title="什么时候函数适合定义为内联&lt;span class=”hint–top hint–rounded” aria-label=”菜鸟教程-C++内联函数"></a>什么时候函数适合定义为内联<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote">&lt;span class=”hint–top hint–rounded” aria-label=”菜鸟教程-C++内联函数</h2><p>“&gt;[2]</span></a></sup></p>
-<ol>
+<h2 id="什么时候函数适合定义为内联"><a href="#什么时候函数适合定义为内联" class="headerlink" title="什么时候函数适合定义为内联"></a>什么时候函数适合定义为内联</h2><ol>
 <li>函数尽量的短(&lt;10行)</li>
 <li>函数简单(不能有复杂语句while,switch等)</li>
 <li>内联函数不能递归调用自己</li>
@@ -283,18 +281,19 @@
 <blockquote>
 <p>注意:<br>inline声明是对编译器的一种<strong>建议</strong>,编译器是否觉得采取你的建议取决于函数是否符合内联的有利条件。<br>如果<strong>函数体非常大</strong>，那么编译器将忽略函数的内联声明，而将内联函数作为普通函数处理。</p>
 </blockquote>
-<h2 id="内联函数和宏定义的区别-lt-span-class-”hint–top-hint–rounded”-aria-label-”博客-宏定义和内联函数区别"><a href="#内联函数和宏定义的区别-lt-span-class-”hint–top-hint–rounded”-aria-label-”博客-宏定义和内联函数区别" class="headerlink" title="内联函数和宏定义的区别&lt;span class=”hint–top hint–rounded” aria-label=”博客-宏定义和内联函数区别"></a>内联函数和宏定义的区别<sup id="fnref:3" class="footnote-ref"><a href="#fn:3" rel="footnote">&lt;span class=”hint–top hint–rounded” aria-label=”博客-宏定义和内联函数区别</h2><p>“&gt;[3]</span></a></sup></p>
-<ol>
+<h2 id="内联函数和宏定义的区别"><a href="#内联函数和宏定义的区别" class="headerlink" title="内联函数和宏定义的区别"></a>内联函数和宏定义的区别</h2><ol>
 <li>宏由预处理器在预处理阶段展开,内联函数是由编译器控制的。</li>
 <li>在编译的时候，内联函数直接被嵌入到目标代码中去，而宏只是一个简单的文本替换。</li>
 <li>内联函数是函数,可以进行诸如类型安全检查、语句是否正确等编译功能。宏不是函数,不具有这样的功能。</li>
 <li>内联函数在运行时可调试，宏定义不可以。</li>
 </ol>
 <h2 id="编译器默认内联的情况"><a href="#编译器默认内联的情况" class="headerlink" title="编译器默认内联的情况"></a>编译器默认内联的情况</h2><p>在类体内定义的函数会被编译器自动声明为内联函数。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.cnblogs.com/qg-whz/p/4641479.html">博客-C++内联函数</a>
-<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:2" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/cpp-inline-functions.html">菜鸟教程-C++内联函数</a>
-<a href="#fnref:2" rev="footnote" class="footnote-backref"> ↩</a></span></span></li><li><span id="fn:3" class="footnote-text"><span><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chengxuyuancc/archive/2013/04/04/2999844.html">博客-宏定义和内联函数区别</a>
-<a href="#fnref:3" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/qg-whz/p/4641479.html">博客-C++内联函数</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/cpp-inline-functions.html">菜鸟教程-C++内联函数</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chengxuyuancc/archive/2013/04/04/2999844.html">博客-宏定义和内联函数区别</a></li>
+</ol>
+
             </div>
             <hr>
             <div>
