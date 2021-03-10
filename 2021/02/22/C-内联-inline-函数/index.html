@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      937 字
+      954 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      11
        分钟
     </span>
   
@@ -238,7 +238,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：4 天前
+                  本文最后更新于：几秒前
                 
               </p>
             
@@ -276,7 +276,7 @@
 <li>函数尽量的短(&lt;10行)</li>
 <li>函数简单(不能有复杂语句while,switch等)</li>
 <li>内联函数不能递归调用自己</li>
-<li>虚函数不能内联</li>
+<li>inline可以修饰虚函数,但是虚函数发生动态绑定时不能内联</li>
 </ol>
 <blockquote>
 <p>注意:<br>inline声明是对编译器的一种<strong>建议</strong>,编译器是否觉得采取你的建议取决于函数是否符合内联的有利条件。<br>如果<strong>函数体非常大</strong>，那么编译器将忽略函数的内联声明，而将内联函数作为普通函数处理。</p>
