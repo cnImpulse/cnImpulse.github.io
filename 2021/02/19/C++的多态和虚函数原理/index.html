@@ -238,7 +238,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：16 天前
+                  本文最后更新于：5 天前
                 
               </p>
             
@@ -255,7 +255,7 @@
 ">[1]</span></a></sup></p>
 </blockquote>
 <p>多态可以根据状态确定时间分为: <strong>静态多态</strong> 和 <strong>动态多态</strong>。<br>静态多态: 编译期确定<br>动态多态: 运行时确定</p>
-<h2 id="为什么需要多态"><a href="#为什么需要多态" class="headerlink" title="为什么需要多态"></a>为什么需要多态</h2><p>为了实现代码复用。</p>
+<h2 id="为什么需要多态"><a href="#为什么需要多态" class="headerlink" title="为什么需要多态"></a>为什么需要多态</h2><p>为了实现代码复用。<br>同时还可以降低类之间的耦合度。</p>
 <p>假设我要写一个排序函数<br>如果我写成:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">Sort</span><span class="hljs-params">(<span class="hljs-keyword">int</span>[] a)</span> </span>&#123;...&#125;<br></code></pre></div></td></tr></table></figure>
 <blockquote>
@@ -275,6 +275,7 @@
 <h2 id="怎么实现多态"><a href="#怎么实现多态" class="headerlink" title="怎么实现多态"></a>怎么实现多态</h2><p>多态的实现都是通过<strong>延迟确认类型</strong>来确定的。</p>
 <p>例如上面的代码例子,函数的参数类型在我写代码的时候就确定下来了,这就很僵化。<br>静态多态就是把这个类型确定的时间延迟到了编译时由编译器确定。<br>动态多态就是在程序跑起来了,运行到某个对象的虚函数的时候根据该对象的<strong>虚指针</strong>找到<strong>虚表</strong>,然后确定具体调用哪个函数。</p>
 <p><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.0.9/images/C++/1.png" srcset="/img/loading.gif" alt="两种多态"></p>
+<p>PS: <strong>函数重载也是一种静态多态</strong></p>
 <hr>
 <h1 id="虚函数详解"><a href="#虚函数详解" class="headerlink" title="虚函数详解"></a>虚函数详解</h1><h2 id="什么是虚函数"><a href="#什么是虚函数" class="headerlink" title="什么是虚函数"></a>什么是虚函数</h2><blockquote>
 <p>虚函数 是在基类中使用关键字<strong>virtual</strong>声明的函数。在派生类中重新定义基类中定义的虚函数时，会告诉编译器不要静态链接到该函数。<br>我们想要的是在程序中任意点可以根据所调用的对象类型来选择调用的函数，这种操作被称为动态链接，或后期绑定。<sup id="fnref:2" class="footnote-ref"><a href="#fn:2" rel="footnote"><span class="hint--top hint--rounded" aria-label="菜鸟教程-C++多态
