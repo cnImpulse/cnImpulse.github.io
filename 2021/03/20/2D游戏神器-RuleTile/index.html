@@ -19,7 +19,7 @@
   <meta name="description" content="">
   <meta name="author" content="Impulse">
   <meta name="keywords" content="">
-  <title>C++内联(inline)函数 - GameDesign</title>
+  <title>2D游戏神器-RuleTile - GameDesign</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -164,7 +164,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="C++内联(inline)函数">
+            <span class="h2" id="subtitle" title="2D游戏神器-RuleTile">
               
             </span>
 
@@ -174,8 +174,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-02-22 17:07" pubdate>
-        2021年2月22日 下午
+      <time datetime="2021-03-20 15:39" pubdate>
+        2021年3月20日 下午
       </time>
     </span>
   
@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      954 字
+      703 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      11
+      7
        分钟
     </span>
   
@@ -234,64 +234,49 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">C++内联(inline)函数</h1>
+            <h1 style="display: none">2D游戏神器-RuleTile</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：10 天前
+                  本文最后更新于：几秒前
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="内联函数要解决什么问题"><a href="#内联函数要解决什么问题" class="headerlink" title="内联函数要解决什么问题"></a>内联函数要解决什么问题</h2><p>函数调用是需要额外开销的,假如有一些短小简单的函数被频繁调用,会大量消耗栈空间。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-comment">//判断闰年</span><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isLeapYear</span><span class="hljs-params">(<span class="hljs-keyword">int</span> year)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> (year%<span class="hljs-number">4</span>==<span class="hljs-number">0</span>&amp;&amp;year%<span class="hljs-number">100</span>!=<span class="hljs-number">0</span>)||year%<span class="hljs-number">400</span>==<span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">leapYearsCount</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; years)</span></span>&#123;<br>    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;years.size();++i)&#123;<br>        <span class="hljs-keyword">if</span>(isLearYear(years[i])) ++ans;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></div></td></tr></table></figure>
-<p>isLeapYear()这个简单函数被多次调用,浪费栈空间和时间！<br>有没有什么办法节约这部分开销</p>
-<h2 id="内联函数原理"><a href="#内联函数原理" class="headerlink" title="内联函数原理"></a>内联函数原理</h2><p>有人会这么写代码</p>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">leapYearsCount</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; years)</span></span>&#123;<br>    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;years.size();++i)&#123;<br>        <span class="hljs-keyword">if</span>(year%<span class="hljs-number">4</span>==<span class="hljs-number">0</span>&amp;&amp;year%<span class="hljs-number">100</span>!=<span class="hljs-number">0</span>)||year%<span class="hljs-number">400</span>==<span class="hljs-number">0</span>) ++ans;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></div></td></tr></table></figure>
-<p>减少了多次调用函数的开销,但是破坏了函数的可读性,简单的说就是代码变丑了,代码会变的不易修改。</p>
-<blockquote>
-<p>为了实现编译器自动替换函数体,我们可以通过<strong>inline</strong>关键字,将函数声明为<strong>内联函数</strong>。</p>
-</blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-comment">//判断闰年</span><br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">isLeapYear</span><span class="hljs-params">(<span class="hljs-keyword">int</span> year)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> (year%<span class="hljs-number">4</span>==<span class="hljs-number">0</span>&amp;&amp;year%<span class="hljs-number">100</span>!=<span class="hljs-number">0</span>)||year%<span class="hljs-number">400</span>==<span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">leapYearsCount</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; years)</span></span>&#123;<br>    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;years.size();++i)&#123;<br>        <span class="hljs-keyword">if</span>(isLearYear(years[i])) ++ans;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></div></td></tr></table></figure>
-<p>这样既可以也函数形式在程序里使用isLeapYear(), 又不用在运行时承担额外开销。</p>
-<h2 id="内联函数优缺点"><a href="#内联函数优缺点" class="headerlink" title="内联函数优缺点"></a>内联函数优缺点</h2><blockquote>
-<p>优点</p>
+              <h2 id="Tilemap"><a href="#Tilemap" class="headerlink" title="Tilemap"></a>Tilemap</h2><p>Tilemap是一种地图编辑方式,使用Tilemap可以让我们就像搭积木一样快速搭建地图。<br>许多2D游戏都是使用的这样的方式构建地图,例如: 泰拉瑞亚,蔚蓝,甚至是饥荒</p>
+<p><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.1.1/images/tilemap/1.jpeg" srcset="/img/loading.gif" alt="泰拉瑞亚"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.1.1/images/tilemap/2.jpeg" srcset="/img/loading.gif" alt="蔚蓝"></p>
+<p>Unity在2017版本引入<a target="_blank" rel="noopener" href="https://docs.unity3d.com/2021.1/Documentation/Manual/class-Tilemap.html">Tilemap</a>组件,并在随后的几年版本里逐渐完善。</p>
+<h2 id="RuleTile"><a href="#RuleTile" class="headerlink" title="RuleTile"></a>RuleTile</h2><p>但是我们今天要讲的不是Tilemap,而是Tilemap的进阶工具-RuleTile。</p>
+<p>在使用Tilemap搭建地图时,我们会发现这样还是太低效了,我们的2D地图是有特定规则的,例如地表的瓦片和地底的瓦片不同,中间的瓦片和两边的瓦片不同。<br><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.1.1/images/tilemap/3.png" srcset="/img/loading.gif" alt="有特定规则的地图"></p>
+<p>有没有办法,让计算机帮我们计算这些规则,而我们只需要勾勒出地图轮廓呢。<br>还真有,不过需要我们下载Unity的2D扩展包,里面包含了RuleTile。</p>
+<h2 id="安装2d-extras"><a href="#安装2d-extras" class="headerlink" title="安装2d-extras"></a>安装2d-extras</h2><p><a target="_blank" rel="noopener" href="https://github.com/Unity-Technologies/2d-extras">2d-extras GitHub地址</a></p>
+<p>有两种下载方式</p>
 <ol>
-<li>它通过避免函数调用所带来的开销来提高你程序的运行速度。</li>
-<li>当函数调用发生时，它节省了变量弹栈、压栈的开销。</li>
-<li>它避免了一个函数执行完返回原现场的开销。</li>
-<li>通过将函数声明为内联，你可以把函数定义放在头文件内。</li>
+<li>下载压缩包并解压到Unity项目Assets文件夹中。</li>
+<li>下载仓库并添加到Unity的包管理器。 -具体方式见2d-extras的README</li>
 </ol>
-</blockquote>
-<blockquote>
-<p>缺点：</p>
+<p>添加到项目里面之后,我们会发现在Creat最上面有一个2D选项,我们可以在那里选择创建各种瓦片或者笔刷。</p>
+<h2 id="使用RuleTile"><a href="#使用RuleTile" class="headerlink" title="使用RuleTile"></a>使用RuleTile</h2><p>开始搭地图,一张相对完整的Tilemap需要7种基础瓦片。<br><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.1.1/images/tilemap/4.jpg" srcset="/img/loading.gif" alt="基础瓦片"><br>7种瓦片经过旋转和组合就可以构成一个2D游戏地图了。</p>
+<p>接下来开始创建2D地图</p>
 <ol>
-<li>因为代码的扩展，内联函数增大了可执行程序的体积。</li>
-<li>C++内联函数的展开是中编译阶段，这就意味着如果你的内联函数发生了改动，那么就需要重新编译代码。</li>
-<li>当你把内联函数放在头文件中时，它将会使你的头文件信息变多，不过头文件的使用者不用在意这些。</li>
-<li>有时候内联函数并不受到青睐，比如在嵌入式系统中，嵌入式系统的存储约束可能不允许体积很大的可执行程序。</li>
+<li>建空项目</li>
+<li>添加2d-extras</li>
+<li>添加Tilemap到场景</li>
+<li>添加7种基础瓦片图片</li>
+<li>创建一个RuleTile并设定显示规则</li>
+<li>创建画板,添加刚刚的RuleTile</li>
+<li>画地图</li>
 </ol>
-</blockquote>
-<h2 id="什么时候函数适合定义为内联"><a href="#什么时候函数适合定义为内联" class="headerlink" title="什么时候函数适合定义为内联"></a>什么时候函数适合定义为内联</h2><ol>
-<li>函数尽量的短(&lt;10行)</li>
-<li>函数简单(不能有复杂语句while,switch等)</li>
-<li>内联函数不能递归调用自己</li>
-<li>inline可以修饰虚函数,但是虚函数发生动态绑定时不能内联</li>
-</ol>
-<blockquote>
-<p>注意:<br>inline声明是对编译器的一种<strong>建议</strong>,编译器是否觉得采取你的建议取决于函数是否符合内联的有利条件。<br>如果<strong>函数体非常大</strong>，那么编译器将忽略函数的内联声明，而将内联函数作为普通函数处理。</p>
-</blockquote>
-<h2 id="内联函数和宏定义的区别"><a href="#内联函数和宏定义的区别" class="headerlink" title="内联函数和宏定义的区别"></a>内联函数和宏定义的区别</h2><ol>
-<li>宏由预处理器在预处理阶段展开,内联函数是由编译器控制的。</li>
-<li>在编译的时候，内联函数直接被嵌入到目标代码中去，而宏只是一个简单的文本替换。</li>
-<li>内联函数是函数,可以进行诸如类型安全检查、语句是否正确等编译功能。宏不是函数,不具有这样的功能。</li>
-<li>内联函数在运行时可调试，宏定义不可以。</li>
-</ol>
-<h2 id="编译器默认内联的情况"><a href="#编译器默认内联的情况" class="headerlink" title="编译器默认内联的情况"></a>编译器默认内联的情况</h2><p>在类体内定义的函数会被编译器自动声明为内联函数。</p>
+<h2 id="RuleTile设置"><a href="#RuleTile设置" class="headerlink" title="RuleTile设置"></a>RuleTile设置</h2><p><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.1.1/images/tilemap/5.png" srcset="/img/loading.gif" alt="瓦片规则"><br>瓦片规则的设置特别简单,就是设置那个九宫格。<br>绿箭头代表有格子,红叉代表没有格子。我们根据每种瓦片的显示一条条设置就行。<br>九宫格中间可以设置旋转,这样我们就不用自己设置旋转之后的规则了。</p>
+<p>例如:<br>第一条规则,当该瓦片上边和左边没有瓦片,且下边和右边有瓦片时,显示右侧精灵图。<br>如果旋转该瓦片之后也符合规则,则旋转精灵图并显示。</p>
+<p>再比如:<br>第三条规则,如果四边都没有瓦片,就显示该精灵图。并且没有设置旋转。</p>
+<p>最终效果如下<br><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.1.1/images/tilemap/6.png" srcset="/img/loading.gif" alt="效果地图"></p>
+<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><p>Unity版本: 2019.2.17f1<br><a target="_blank" rel="noopener" href="https://github.com/impulses-1/RuleTile-Study">项目GitHub地址</a></p>
+<h2 id="后言"><a href="#后言" class="headerlink" title="后言"></a>后言</h2><p>Tilemap 不仅可以把2D图片当成瓦片,一样支持3D物体甚至是动画。<br>我们可以把一些效果做成预制体,然后当成瓦片刷上去,还是有很大的发挥空间的。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/qg-whz/p/4641479.html">博客-C++内联函数</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/cpp-inline-functions.html">菜鸟教程-C++内联函数</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chengxuyuancc/archive/2013/04/04/2999844.html">博客-宏定义和内联函数区别</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.unity3d.com/Manual/class-Tilemap.html">Unity官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://gameinstitute.qq.com/community/detail/121256">Unity中使用Tilemap快速创建2D游戏世界</a></li>
 </ol>
 
             </div>
@@ -302,7 +287,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/C-%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0/">C++深入学习</a>
+                      <a class="hover-with-bg" href="/categories/Unity%E5%AD%A6%E4%B9%A0/">Unity学习</a>
                     
                   </div>
                 
@@ -310,7 +295,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
+                      <a class="hover-with-bg" href="/tags/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">2D游戏开发</a>
                     
                   </div>
                 
@@ -323,18 +308,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/03/20/2D%E6%B8%B8%E6%88%8F%E7%A5%9E%E5%99%A8-RuleTile/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2D游戏神器-RuleTile</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/02/19/C++%E7%9A%84%E5%A4%9A%E6%80%81%E5%92%8C%E8%99%9A%E5%87%BD%E6%95%B0%E5%8E%9F%E7%90%86/">
-                        <span class="hidden-mobile">C++的多态和虚函数原理</span>
+                      <a href="/2021/02/22/C-%E5%86%85%E8%81%94-inline-%E5%87%BD%E6%95%B0/">
+                        <span class="hidden-mobile">C++内联(inline)函数</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
