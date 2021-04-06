@@ -19,7 +19,7 @@
   <meta name="description" content="">
   <meta name="author" content="Impulse">
   <meta name="keywords" content="">
-  <title>2D游戏神器-RuleTile - GameDesign</title>
+  <title>游戏设计四元法 - GameDesign</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -164,7 +164,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="2D游戏神器-RuleTile">
+            <span class="h2" id="subtitle" title="游戏设计四元法">
               
             </span>
 
@@ -174,8 +174,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-03-20 15:39" pubdate>
-        2021年3月20日 下午
+      <time datetime="2021-04-06 11:10" pubdate>
+        2021年4月6日 上午
       </time>
     </span>
   
@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      703 字
+      850 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      7
+      8
        分钟
     </span>
   
@@ -234,49 +234,56 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">2D游戏神器-RuleTile</h1>
+            <h1 style="display: none">游戏设计四元法</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：17 天前
+                  本文最后更新于：几秒前
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="Tilemap"><a href="#Tilemap" class="headerlink" title="Tilemap"></a>Tilemap</h2><p>Tilemap是一种地图编辑方式,使用Tilemap可以让我们就像搭积木一样快速搭建地图。<br>许多2D游戏都是使用的这样的方式构建地图,例如: 泰拉瑞亚,蔚蓝,甚至是饥荒</p>
-<p><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.1.1/images/tilemap/1.jpeg" srcset="/img/loading.gif" alt="泰拉瑞亚"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.1.1/images/tilemap/2.jpeg" srcset="/img/loading.gif" alt="蔚蓝"></p>
-<p>Unity在2017版本引入<a target="_blank" rel="noopener" href="https://docs.unity3d.com/2021.1/Documentation/Manual/class-Tilemap.html">Tilemap</a>组件,并在随后的几年版本里逐渐完善。</p>
-<h2 id="RuleTile"><a href="#RuleTile" class="headerlink" title="RuleTile"></a>RuleTile</h2><p>但是我们今天要讲的不是Tilemap,而是Tilemap的进阶工具-RuleTile。</p>
-<p>在使用Tilemap搭建地图时,我们会发现这样还是太低效了,我们的2D地图是有特定规则的,例如地表的瓦片和地底的瓦片不同,中间的瓦片和两边的瓦片不同。<br><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.1.1/images/tilemap/3.png" srcset="/img/loading.gif" alt="有特定规则的地图"></p>
-<p>有没有办法,让计算机帮我们计算这些规则,而我们只需要勾勒出地图轮廓呢。<br>还真有,不过需要我们下载Unity的2D扩展包,里面包含了RuleTile。</p>
-<h2 id="安装2d-extras"><a href="#安装2d-extras" class="headerlink" title="安装2d-extras"></a>安装2d-extras</h2><p><a target="_blank" rel="noopener" href="https://github.com/Unity-Technologies/2d-extras">2d-extras GitHub地址</a></p>
-<p>有两种下载方式</p>
-<ol>
-<li>下载压缩包并解压到Unity项目Assets文件夹中。</li>
-<li>下载仓库并添加到Unity的包管理器。 -具体方式见2d-extras的README</li>
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该文章知识点大部分来自<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Jesse_Schell">Jesse Schell</a>的著作<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%89%BA%E6%9C%AF%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89">《游戏设计艺术》</a>。</p>
+<p>四元法是由Jesse Schell于《游戏设计艺术》提出的一种游戏分析框架。</p>
+<h2 id="四元法"><a href="#四元法" class="headerlink" title="四元法"></a>四元法</h2><p>四元法将构成游戏的元素划分为四种类型,分别为 美学、故事、机制、技术。<br><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.1.2/images/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/1.png" srcset="/img/loading.gif" alt="四元法"></p>
+<h2 id="四种元素"><a href="#四种元素" class="headerlink" title="四种元素"></a>四种元素</h2><ol>
+<li>美学<blockquote>
+<p>美学是指游戏的外在表现,例如画面、音乐。<br>美学不限定在游戏本身,例如<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%AF%BB%E5%89%91">雅达利寻剑</a>。</p>
+</blockquote>
+</li>
+<li>故事<blockquote>
+<p>故事又可以说是剧情,故事可以有多种表达方式: 线性、分支、或者是像<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E9%BB%91%E6%9A%97%E9%9D%88%E9%AD%82">黑暗之魂</a>那样通过零碎的描述来模糊的介绍故事。</p>
+</blockquote>
+</li>
+<li>机制<blockquote>
+<p>机制指游戏的过程和规则,包括游戏世界的运行规则、和玩家的交互规则等等。<br>机制使游戏区别于其他艺术形式。</p>
+</blockquote>
+</li>
+<li>技术<blockquote>
+<p>技术是实现游戏的手段。<br>桌游和电子游戏都是游戏,他们的实现”技术”不同。</p>
+</blockquote>
+</li>
 </ol>
-<p>添加到项目里面之后,我们会发现在Creat最上面有一个2D选项,我们可以在那里选择创建各种瓦片或者笔刷。</p>
-<h2 id="使用RuleTile"><a href="#使用RuleTile" class="headerlink" title="使用RuleTile"></a>使用RuleTile</h2><p>开始搭地图,一张相对完整的Tilemap需要7种基础瓦片。<br><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.1.1/images/tilemap/4.jpg" srcset="/img/loading.gif" alt="基础瓦片"><br>7种瓦片经过旋转和组合就可以构成一个2D游戏地图了。</p>
-<p>接下来开始创建2D地图</p>
+<p>我们可以浅显的说: </p>
+<blockquote>
+<p>如果设计游戏是造人的话,那么美学是皮肤,故事是血肉,技术是骨骼,机制是灵魂。</p>
+</blockquote>
+<p>这样说好像有点不太准确,Jesse Schell说: <strong>没有任何一种元素比其他的更重要</strong>。<br>但是从游戏设计师的角度来说,我还是觉得机制要重要一些。</p>
+<h2 id="体验"><a href="#体验" class="headerlink" title="体验"></a>体验</h2><p>不管哪个元素重要,他们目的都是为了塑造<strong>体验</strong>。<br>每种元素都是为了通过游戏让玩家获得某种<strong>积极</strong>的体验(游戏不一定积极,但是带来的对现实世界的思考得是积极的)。<br>四种元素相互影响,相互加强,核心目的都是为了更好的传达这种体验。</p>
+<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><p>游戏: <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%94%9A%E8%97%8D_(%E9%81%8A%E6%88%B2)">蔚蓝</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.1.2/images/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/2.gif" srcset="/img/loading.gif" alt="蔚蓝"></p>
+<ul>
+<li>体验: 从玩家角度出发,体验是各不相同的。对于我而言,通关蔚蓝之后最大的体验就是: 克服困难,不惧失败,最终登顶。</li>
+</ul>
 <ol>
-<li>建空项目</li>
-<li>添加2d-extras</li>
-<li>添加Tilemap到场景</li>
-<li>添加7种基础瓦片图片</li>
-<li>创建一个RuleTile并设定显示规则</li>
-<li>创建画板,添加刚刚的RuleTile</li>
-<li>画地图</li>
-</ol>
-<h2 id="RuleTile设置"><a href="#RuleTile设置" class="headerlink" title="RuleTile设置"></a>RuleTile设置</h2><p><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.1.1/images/tilemap/5.png" srcset="/img/loading.gif" alt="瓦片规则"><br>瓦片规则的设置特别简单,就是设置那个九宫格。<br>绿箭头代表有格子,红叉代表没有格子。我们根据每种瓦片的显示一条条设置就行。<br>九宫格中间可以设置旋转,这样我们就不用自己设置旋转之后的规则了。</p>
-<p>例如:<br>第一条规则,当该瓦片上边和左边没有瓦片,且下边和右边有瓦片时,显示右侧精灵图。<br>如果旋转该瓦片之后也符合规则,则旋转精灵图并显示。</p>
-<p>再比如:<br>第三条规则,如果四边都没有瓦片,就显示该精灵图。并且没有设置旋转。</p>
-<p>最终效果如下<br><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.1.1/images/tilemap/6.png" srcset="/img/loading.gif" alt="效果地图"></p>
-<h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><p>Unity版本: 2019.2.17f1<br><a target="_blank" rel="noopener" href="https://github.com/impulses-1/RuleTile-Study">项目GitHub地址</a></p>
-<h2 id="后言"><a href="#后言" class="headerlink" title="后言"></a>后言</h2><p>Tilemap 不仅可以把2D图片当成瓦片,一样支持3D物体甚至是动画。<br>我们可以把一些效果做成预制体,然后当成瓦片刷上去,还是有很大的发挥空间的。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://docs.unity3d.com/Manual/class-Tilemap.html">Unity官方文档</a></li>
-<li><a target="_blank" rel="noopener" href="https://gameinstitute.qq.com/community/detail/121256">Unity中使用Tilemap快速创建2D游戏世界</a></li>
+<li><p>机制: 最重要的机制是主角的跳跃和冲刺,这是对爬山过程的抽象。大多数时候,我们的角色都是从关卡下方进入,通过跳跃和冲刺,到关卡上方过关。这个机制就是在表示,我们玩的游戏是在攀登一座山。</p>
+</li>
+<li><p>故事: 一句话概括: 主角在登山过程中和自己和解,最终登山山顶。故事可以更好的让玩家代入角色。我们随着游戏进行逐渐了解主角,我们会逐渐感受到主角的体验,主角的振作也会让我们受到鼓舞,坚定登顶的决心。</p>
+</li>
+<li><p>美学: 游戏中激烈的狂风,各种机关障碍,都是在模拟登山的困难。还有一些美术细节: 主角的头发会随风飘动,跳跃和落地会激起尘土。游戏中的音乐也是值得称道,但是我对于音乐没什么研究,说不出什么漂亮话。</p>
+</li>
+<li><p>技术: <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1M441197sr?from=search&seid=12343706201943940518">游戏手感赏析</a>。虽然是2D游戏,但是蔚蓝的技术力是很高的,为了实现平滑自然的手感,开发者做了很多细节设计。开发者开源的5000行代码被誉为<strong>目前横版跳跃类游戏的天花板</strong>。蔚蓝里面优秀的技术更好的实现了机制和美学。</p>
+</li>
 </ol>
 
             </div>
@@ -287,7 +294,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/Unity%E5%AD%A6%E4%B9%A0/">Unity学习</a>
+                      <a class="hover-with-bg" href="/categories/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">游戏设计</a>
                     
                   </div>
                 
@@ -295,7 +302,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/2D%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">2D游戏开发</a>
+                      <a class="hover-with-bg" href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">游戏设计</a>
                     
                   </div>
                 
@@ -308,18 +315,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/04/06/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E5%9B%9B%E5%85%83%E6%B3%95/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">游戏设计四元法</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/02/22/C-%E5%86%85%E8%81%94-inline-%E5%87%BD%E6%95%B0/">
-                        <span class="hidden-mobile">C++内联(inline)函数</span>
+                      <a href="/2021/03/20/2D%E6%B8%B8%E6%88%8F%E7%A5%9E%E5%99%A8-RuleTile/">
+                        <span class="hidden-mobile">2D游戏神器-RuleTile</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
