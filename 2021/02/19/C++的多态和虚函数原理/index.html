@@ -61,7 +61,7 @@
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.3.0"></head>
+<meta name="generator" content="Hexo 5.4.0"></head>
 
 
 <body>
@@ -238,7 +238,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：1 个月前
+                  本文最后更新于：5 个月前
                 
               </p>
             
@@ -353,6 +353,7 @@
 <p>至少有一个纯虚函数的类就是抽象类,因为纯虚函数没有实现,抽象类是<strong>无法被实例化</strong>的。<br>派生自抽象类的类<strong>必须重写</strong>抽象基类的所有纯虚函数,否则会引发编译错误。</p>
 </blockquote>
 <figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Weapon</span>&#123;</span> <span class="hljs-comment">//武器基类</span><br>    <span class="hljs-keyword">protected</span>:<br>        <span class="hljs-keyword">int</span> atk;<br>    <span class="hljs-keyword">public</span>:<br>        Weapon() &#123;atk = <span class="hljs-number">1</span>;&#125;<br>        <span class="hljs-comment">// 纯虚函数的函数体被 &quot;=0;&quot; 代替,表示基类不实现,留给派生类实现。</span><br>        <span class="hljs-function"><span class="hljs-keyword">virtual</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Attack</span><span class="hljs-params">()</span> </span>= <span class="hljs-number">0</span>;<br>&#125;;<br></code></pre></div></td></tr></table></figure>
+
 <h2 id="重载和重写"><a href="#重载和重写" class="headerlink" title="重载和重写"></a>重载和重写</h2><blockquote>
 <p>重载: 函数名相同,函数的参数个数、参数类型或参数顺序三者中必须至少有一种不同。函数返回值的类型可以相同,也可以不相同。发生在一个类内部。</p>
 </blockquote>
