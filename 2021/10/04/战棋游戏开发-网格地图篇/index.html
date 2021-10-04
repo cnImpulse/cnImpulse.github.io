@@ -19,7 +19,7 @@
   <meta name="description" content="">
   <meta name="author" content="Impulse">
   <meta name="keywords" content="">
-  <title>游戏设计四元法 - GameDesign</title>
+  <title>战棋游戏开发-网格地图篇 - GameDesign</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -164,7 +164,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="游戏设计四元法">
+            <span class="h2" id="subtitle" title="战棋游戏开发-网格地图篇">
               
             </span>
 
@@ -174,8 +174,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-04-06 11:10" pubdate>
-        2021年4月6日 上午
+      <time datetime="2021-10-04 14:51" pubdate>
+        2021年10月4日 下午
       </time>
     </span>
   
@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      873 字
+      635 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      8
+      7
        分钟
     </span>
   
@@ -234,59 +234,48 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">游戏设计四元法</h1>
+            <h1 style="display: none">战棋游戏开发-网格地图篇</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：8 天前
+                  本文最后更新于：24 分钟前
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>该文章知识点大部分来自<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Jesse_Schell">Jesse Schell</a>的著作<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1%E8%89%BA%E6%9C%AF%EF%BC%88%E7%AC%AC2%E7%89%88%EF%BC%89">《游戏设计艺术》</a>。</p>
-<p>四元法是由Jesse Schell于《游戏设计艺术》提出的一种游戏分析框架。</p>
-<h2 id="四元法"><a href="#四元法" class="headerlink" title="四元法"></a>四元法</h2><p>四元法将构成游戏的元素划分为四种类型,分别为 美学、故事、机制、技术。<br><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.1.2/images/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/1.png" srcset="/img/loading.gif" alt="四元法"></p>
-<h2 id="四种元素"><a href="#四种元素" class="headerlink" title="四种元素"></a>四种元素</h2><ol>
-<li>美学<blockquote>
-<p>美学是指游戏的外在表现,例如画面、音乐。<br>美学不限定在游戏本身,例如<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E5%AF%BB%E5%89%91">雅达利寻剑</a>。</p>
-</blockquote>
-</li>
-<li>故事<blockquote>
-<p>故事又可以说是剧情,故事可以有多种表达方式: 线性、分支、或者是像<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/%E9%BB%91%E6%9A%97%E9%9D%88%E9%AD%82">黑暗之魂</a>那样通过零碎的描述来模糊的介绍故事。</p>
-</blockquote>
-</li>
-<li>机制<blockquote>
-<p>机制指游戏的过程和规则,包括游戏世界的运行规则、和玩家的交互规则等等。<br>机制使游戏区别于其他艺术形式。</p>
-</blockquote>
-</li>
-<li>技术<blockquote>
-<p>技术是实现游戏的手段。<br>桌游和电子游戏都是游戏,他们的实现”技术”不同。</p>
-</blockquote>
-</li>
-</ol>
-<p>我们可以浅显的说: </p>
+              <h2 id="网格地图介绍"><a href="#网格地图介绍" class="headerlink" title="网格地图介绍"></a>网格地图介绍</h2><p><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource/images/SRPG/02.jpg" srcset="/img/loading.gif" alt="战律"></p>
+<p>网格地图由一个个的tile构成整个地图。每个tile包括一些基本信息, 例如贴图, 位置, 地形等等。<br>比较常见的tile有四边形和六边形, 例如文明的地图就是六边形的。</p>
 <blockquote>
-<p>如果设计游戏是造人的话,那么美学是皮肤,故事是血肉,技术是骨骼,机制是灵魂。</p>
+<p>我很喜欢这样的地图, 从视觉角度讲, 网格地图给人一种秩序感, 这和我们开发的战棋游戏类型的策略性是比较契合的。我所了解到所有战棋游戏的地图都是网格化的, 只是实现细节不同而已。</p>
 </blockquote>
-<p>这样说好像有点不太准确,Jesse Schell说: <strong>没有任何一种元素比其他的更重要</strong>。<br>但是从游戏设计师的角度来说,我还是觉得机制要重要一些。</p>
-<p>后话-在第12章,Jesse Schell说: <strong>游戏机制是游戏真正的核心</strong>(偷笑)</p>
-<h2 id="体验"><a href="#体验" class="headerlink" title="体验"></a>体验</h2><p>不管哪个元素重要,他们目的都是为了塑造<strong>体验</strong>。<br>每种元素都是为了通过游戏让玩家获得某种<strong>积极</strong>的体验(游戏不一定积极,但是带来的对现实世界的思考得是积极的)。<br>四种元素相互影响,相互加强,核心目的都是为了更好的传达这种体验。</p>
-<h2 id="样例"><a href="#样例" class="headerlink" title="样例"></a>样例</h2><p>游戏: <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%94%9A%E8%97%8D_(%E9%81%8A%E6%88%B2)">蔚蓝</a></p>
-<p><img src="https://cdn.jsdelivr.net/gh/impulses-1/BlogSource@0.1.2/images/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/2.gif" srcset="/img/loading.gif" alt="蔚蓝"></p>
-<ul>
-<li>体验: 从玩家角度出发,体验是各不相同的。对于我而言,通关蔚蓝之后最大的体验就是: 克服困难,不惧失败,最终登顶。</li>
-</ul>
-<ol>
-<li><p>机制: 最重要的机制是主角的跳跃和冲刺,这是对爬山过程的抽象。大多数时候,我们的角色都是从关卡下方进入,通过跳跃和冲刺,到关卡上方过关。这个机制就是在表示,我们玩的游戏是在攀登一座山。</p>
-</li>
-<li><p>故事: 一句话概括: 主角在登山过程中和自己和解,最终登山山顶。故事可以更好的让玩家代入角色。我们随着游戏进行逐渐了解主角,我们会逐渐感受到主角的体验,主角的振作也会让我们受到鼓舞,坚定登顶的决心。</p>
-</li>
-<li><p>美学: 游戏中激烈的狂风,各种机关障碍,都是在模拟登山的困难。还有一些美术细节: 主角的头发会随风飘动,跳跃和落地会激起尘土。游戏中的音乐也是值得称道,但是我对于音乐没什么研究,说不出什么漂亮话。</p>
-</li>
-<li><p>技术: <a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1M441197sr?from=search&seid=12343706201943940518">游戏手感赏析</a>。虽然是2D游戏,但是蔚蓝的技术力是很高的,为了实现平滑自然的手感,开发者做了很多细节设计。开发者开源的5000行代码被誉为<strong>目前横版跳跃类游戏的天花板</strong>。蔚蓝里面优秀的技术更好的实现了机制和美学。</p>
-</li>
-</ol>
+<blockquote>
+<p>从游戏开发的角度讲, 使用tile铺设地图可以减少美术开发量, 可以用有限个tile构造出各式各样的地图。</p>
+</blockquote>
+<h2 id="网格地图实现"><a href="#网格地图实现" class="headerlink" title="网格地图实现"></a>网格地图实现</h2><p>为了程序解耦, 我们需要将数据和显示分离。</p>
+<p>然后我们先关注单个的网格单元需要哪些数据。<br>然后思考网格地图需要哪些数据, 又该怎么组织网格单元数据。</p>
+<h3 id="网格单元数据-GridData"><a href="#网格单元数据-GridData" class="headerlink" title="网格单元数据(GridData)"></a>网格单元数据(GridData)</h3><blockquote>
+<p>最基础的网格单元数据: 位置, 类型</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs csharp"><span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;summary&gt;</span></span><br><span class="hljs-comment"><span class="hljs-doctag">///</span> 网格单元数据</span><br><span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;/summary&gt;</span></span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">GridData</span><br>&#123;<br>    <span class="hljs-keyword">private</span> Vector2Int m_GridPos;<br>    <span class="hljs-keyword">private</span> GridType m_GridType;<br>&#125;<br><br><span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;summary&gt;</span></span><br><span class="hljs-comment"><span class="hljs-doctag">///</span> 网格地形类型</span><br><span class="hljs-comment"><span class="hljs-doctag">///</span> <span class="hljs-doctag">&lt;/summary&gt;</span></span><br><span class="hljs-keyword">public</span> <span class="hljs-built_in">enum</span> GridType<br>&#123;<br>    None,<br>    Normal,<br>    Wall,<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
+<h3 id="网格地图数据"><a href="#网格地图数据" class="headerlink" title="网格地图数据"></a>网格地图数据</h3><blockquote>
+<p>最基础的网格地图数据: 宽, 高, 所有网格单元数据</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">GridMapData</span><br>&#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-built_in">int</span> m_Width = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">private</span> <span class="hljs-built_in">int</span> m_Height = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">private</span> Dictionary&lt;<span class="hljs-built_in">int</span>, GridData&gt; m_GridList = <span class="hljs-literal">null</span>;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<blockquote>
+<p>Q1: 为什么用字典存储网格单元数据, 而不是二维数组?<br>A: 因为地图不一定是矩形, 可能是不规则的, 对于不存在的网格单元数据, 我们不需要存储。</p>
+</blockquote>
+<blockquote>
+<p>Q2: 为什么字典的key值数据类型是int而不是Vector2Int?<br>A: 这里为了简单, 把网格单元数据m_GridPos转化成了int类型。</p>
+</blockquote>
+<figure class="highlight csharp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs csharp"><span class="hljs-comment">// 根据地图宽, 计算出每个位置的唯一index</span><br><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-built_in">int</span> <span class="hljs-title">GetGridIndex</span>(<span class="hljs-params">Vector2Int gridPos</span>)</span><br><span class="hljs-function"></span>&#123;<br>    <span class="hljs-keyword">return</span> gridPos.y * m_Width + gridPos.x;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="网格地图实体"><a href="#网格地图实体" class="headerlink" title="网格地图实体"></a>网格地图实体</h3><p>我们需要还需要一个GridMap类来显示整个网格地图。<br>这里借助的是Unity里面的tilemap组件, 我就不过多介绍这个组件了。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">GridMap</span><br>&#123;<br>    <span class="hljs-keyword">private</span> GridMapData m_Data = <span class="hljs-literal">null</span>;<br><br>    <span class="hljs-keyword">private</span> TileBase empty = <span class="hljs-literal">null</span>, wall = <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">private</span> Tilemap m_Tilemap = <span class="hljs-literal">null</span>;<br><br>    ... <span class="hljs-comment">// 省略类初始化的代码和资源加载代码, empty, wall按理不应该放在类内部</span><br><br>    <span class="hljs-comment">// 使用tilemap显示地图</span><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RefreshMap</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function"></span>    &#123;<br>        <span class="hljs-keyword">foreach</span>(<span class="hljs-keyword">var</span> gridData <span class="hljs-keyword">in</span> m_Data.GridList.Values)<br>        &#123;<br>            TileBase tile = empty;<br>            <span class="hljs-keyword">if</span> (gridData.GridType == GridType.Wall)<br>            &#123;<br>                tile = wall;<br>            &#125;<br><br>            m_Tilemap.SetTile((Vector3Int)gridData.GridPos, tile);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/cnImpulse/BlogImages/1.jpg" srcset="/img/loading.gif" alt="网格地图"></p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
             </div>
             <hr>
             <div>
@@ -295,7 +284,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">游戏设计</a>
+                      <a class="hover-with-bg" href="/categories/%E6%88%98%E6%A3%8B%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">战棋游戏开发</a>
                     
                   </div>
                 
@@ -303,7 +292,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%B8%B8%E6%88%8F%E8%AE%BE%E8%AE%A1/">游戏设计</a>
+                      <a class="hover-with-bg" href="/tags/%E6%88%98%E6%A3%8B%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">战棋游戏开发</a>
                     
                   </div>
                 
@@ -316,18 +305,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/04/29/%E7%AE%80%E5%8D%95%E7%9A%84%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA%E5%99%A8/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">简单的光线追踪器</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/03/20/2D%E6%B8%B8%E6%88%8F%E7%A5%9E%E5%99%A8-RuleTile/">
-                        <span class="hidden-mobile">2D游戏神器-RuleTile</span>
+                      <a href="/2021/09/26/%E6%88%98%E6%A3%8B%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-%E5%BA%8F/">
+                        <span class="hidden-mobile">战棋游戏开发-序</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
