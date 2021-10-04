@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      635 字
+      645 字
     </span>
   
 
@@ -238,7 +238,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：24 分钟前
+                  本文最后更新于：几秒前
                 
               </p>
             
@@ -274,8 +274,8 @@
 <h3 id="网格地图实体"><a href="#网格地图实体" class="headerlink" title="网格地图实体"></a>网格地图实体</h3><p>我们需要还需要一个GridMap类来显示整个网格地图。<br>这里借助的是Unity里面的tilemap组件, 我就不过多介绍这个组件了。</p>
 <figure class="highlight csharp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs csharp"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">GridMap</span><br>&#123;<br>    <span class="hljs-keyword">private</span> GridMapData m_Data = <span class="hljs-literal">null</span>;<br><br>    <span class="hljs-keyword">private</span> TileBase empty = <span class="hljs-literal">null</span>, wall = <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">private</span> Tilemap m_Tilemap = <span class="hljs-literal">null</span>;<br><br>    ... <span class="hljs-comment">// 省略类初始化的代码和资源加载代码, empty, wall按理不应该放在类内部</span><br><br>    <span class="hljs-comment">// 使用tilemap显示地图</span><br>    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-keyword">void</span> <span class="hljs-title">RefreshMap</span>(<span class="hljs-params"></span>)</span><br><span class="hljs-function"></span>    &#123;<br>        <span class="hljs-keyword">foreach</span>(<span class="hljs-keyword">var</span> gridData <span class="hljs-keyword">in</span> m_Data.GridList.Values)<br>        &#123;<br>            TileBase tile = empty;<br>            <span class="hljs-keyword">if</span> (gridData.GridType == GridType.Wall)<br>            &#123;<br>                tile = wall;<br>            &#125;<br><br>            m_Tilemap.SetTile((Vector3Int)gridData.GridPos, tile);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></div></td></tr></table></figure>
 
-<p><img src="https://cdn.jsdelivr.net/gh/cnImpulse/BlogImages/1.jpg" srcset="/img/loading.gif" alt="网格地图"></p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
+<p><img src="/images/01.png" srcset="/img/loading.gif" alt="网格地图"></p>
+<h2 id="数据序列化和反序列化"><a href="#数据序列化和反序列化" class="headerlink" title="数据序列化和反序列化"></a>数据序列化和反序列化</h2>
             </div>
             <hr>
             <div>
