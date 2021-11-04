@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      771 字
+      775 字
     </span>
   
 
@@ -238,7 +238,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：几秒前
+                  本文最后更新于：7 分钟前
                 
               </p>
             
@@ -260,6 +260,7 @@
 <h2 id="编码问题"><a href="#编码问题" class="headerlink" title="编码问题"></a>编码问题</h2><p>开始测试，发现了一个问题，在TMP_Text下输入汉字是正常的像素字体，但是输入的数字和英文字母不是，这意味着没有在像素字体资源下找到字符，所以使用的是备选字体资源。</p>
 <p>但是打开<strong>gb2312.txt</strong>发现是有数字和英文字母的，查看了一下刚刚生成字体资源，发现英文字母和汉字的编码是<strong>gb2312</strong>，但是TMP把它当成Unicode处理的，汉字没有问题是因为gb2312和Unicode的汉字编码是相同的。</p>
 <p>解决方法: 又生成了一份小的字体资源，生成的时候Character Set选的是Extender Ascll，将该字体设置为备选字体资源，然后测试一切正常。</p>
+<h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><p><img src="https://cdn.jsdelivr.net/gh/cnImpulse/SRPG@develop/Images/04.png" srcset="/img/loading.gif" alt="像素字体"></p>
 
             </div>
             <hr>
