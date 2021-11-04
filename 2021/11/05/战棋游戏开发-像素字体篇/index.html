@@ -19,7 +19,7 @@
   <meta name="description" content="">
   <meta name="author" content="Impulse">
   <meta name="keywords" content="">
-  <title>C++内联(inline)函数 - GameDesign</title>
+  <title>战棋游戏开发-像素字体篇 - GameDesign</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
@@ -164,7 +164,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="C++内联(inline)函数">
+            <span class="h2" id="subtitle" title="战棋游戏开发-像素字体篇">
               
             </span>
 
@@ -174,8 +174,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-02-22 17:07" pubdate>
-        2021年2月22日 下午
+      <time datetime="2021-11-05 06:08" pubdate>
+        2021年11月5日 早上
       </time>
     </span>
   
@@ -186,7 +186,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      880 字
+      771 字
     </span>
   
 
@@ -196,7 +196,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10
+      8
        分钟
     </span>
   
@@ -234,68 +234,32 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">C++内联(inline)函数</h1>
+            <h1 style="display: none">战棋游戏开发-像素字体篇</h1>
             
               <p class="note note-info">
                 
-                  本文最后更新于：6 个月前
+                  本文最后更新于：几秒前
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="内联函数要解决什么问题"><a href="#内联函数要解决什么问题" class="headerlink" title="内联函数要解决什么问题"></a>内联函数要解决什么问题</h2><p>函数调用是需要额外开销的,假如有一些短小简单的函数被频繁调用,会大量消耗栈空间。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-comment">//判断闰年</span><br><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">isLeapYear</span><span class="hljs-params">(<span class="hljs-keyword">int</span> year)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> (year%<span class="hljs-number">4</span>==<span class="hljs-number">0</span>&amp;&amp;year%<span class="hljs-number">100</span>!=<span class="hljs-number">0</span>)||year%<span class="hljs-number">400</span>==<span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">leapYearsCount</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; years)</span></span>&#123;<br>    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;years.size();++i)&#123;<br>        <span class="hljs-keyword">if</span>(isLearYear(years[i])) ++ans;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></div></td></tr></table></figure>
-<p>isLeapYear()这个简单函数被多次调用,浪费栈空间和时间！<br>有没有什么办法节约这部分开销</p>
-<h2 id="内联函数原理"><a href="#内联函数原理" class="headerlink" title="内联函数原理"></a>内联函数原理</h2><p>有人会这么写代码</p>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">leapYearsCount</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; years)</span></span>&#123;<br>    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;years.size();++i)&#123;<br>        <span class="hljs-keyword">if</span>(year%<span class="hljs-number">4</span>==<span class="hljs-number">0</span>&amp;&amp;year%<span class="hljs-number">100</span>!=<span class="hljs-number">0</span>)||year%<span class="hljs-number">400</span>==<span class="hljs-number">0</span>) ++ans;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></div></td></tr></table></figure>
-<p>减少了多次调用函数的开销,但是破坏了函数的可读性,简单的说就是代码变丑了,代码会变的不易修改。</p>
+              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因为Unity原本的Text组件会有字体不清晰的问题，所以我准备使用<a target="_blank" rel="noopener" href="https://docs.unity3d.com/Packages/com.unity.textmeshpro@1.3/manual/index.html">TextMesh Pro</a>组件来替换掉原本的Text。</p>
+<p>后来发现使用TMP还需要生成字体资源，所以干脆去网上找了一个像素字体资源。<br>下面记录一下在使用TMP生成像素字体时遇到对各种问题。</p>
+<h2 id="像素中文字体"><a href="#像素中文字体" class="headerlink" title="像素中文字体"></a>像素中文字体</h2><p>导入TMP资源之后发现默认字体资源是没有中文的，所以我们需要一份中文字体资源，然后使用TMP提供的工具来生成TMP字体资源。</p>
+<p>最终我找到一份像素字体资源:<a target="_blank" rel="noopener" href="https://github.com/Luckeee/mplus_hzk_12">mplus_hzk_12</a><br>白嫖了字体资源，感谢一波。</p>
+<p>在使用TMP工具<strong>Font Asset Creator</strong>的生成资源的过程中，我们会用到上面项目中的两份文件，分别是<strong>mplus_hzk_12.ttf</strong>(也可以选择其他大小的字体资源)和<strong>gb2312.txt</strong>。</p>
+<h2 id="TMP字体资源生成"><a href="#TMP字体资源生成" class="headerlink" title="TMP字体资源生成"></a>TMP字体资源生成</h2><p>找到【窗口】-&gt;【TextMesh Pro】-&gt;【Font Asset Creator】<br><img src="https://cdn.jsdelivr.net/gh/cnImpulse/SRPG@develop/Images/02.png" srcset="/img/loading.gif" alt="Font Asset Creator"></p>
+<p>导入的TMP资源的Documentation文件夹下有英文指导文档，可以参考一下。</p>
+<p>下面来讲一下窗口下的各个参数  </p>
 <blockquote>
-<p>为了实现编译器自动替换函数体,我们可以通过<strong>inline</strong>关键字,将函数声明为<strong>内联函数</strong>。</p>
+<p>Source Font File: 就是需要我们刚刚下载的<strong>mplus_hzk_12.ttf</strong>字体资源文件<br>Sampling Point Size: 文档建议选择Auto Sizing选项<br>Padding: 决定生成的每个字体之间的像素间距<br>Packing Method: Fast模式生产速度快很多，Optimum 可以计算出图集上能承载的最大的字号<br>Atlas Resolution: 生成的图集分辨率(踩坑点: 太小了的话，可能字体放不下)<br>Character Set: 选择生成的字符集，这里我选择的是Characters From File，然后就用上了<strong>gb2312.txt</strong>文件 (踩坑点: 后面说)<br>Render Mode: 渲染模式，因为我们是像素字体，应该选择SMOOTH模式的话会糊掉，其他的几个模式不太清楚差别<br>Get Kerning Pair: 不知道干什么的</p>
 </blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs cpp"><span class="hljs-comment">//判断闰年</span><br><span class="hljs-function"><span class="hljs-keyword">inline</span> <span class="hljs-keyword">bool</span> <span class="hljs-title">isLeapYear</span><span class="hljs-params">(<span class="hljs-keyword">int</span> year)</span></span>&#123;<br>    <span class="hljs-keyword">return</span> (year%<span class="hljs-number">4</span>==<span class="hljs-number">0</span>&amp;&amp;year%<span class="hljs-number">100</span>!=<span class="hljs-number">0</span>)||year%<span class="hljs-number">400</span>==<span class="hljs-number">0</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">leapYearsCount</span><span class="hljs-params">(<span class="hljs-built_in">vector</span>&lt;<span class="hljs-keyword">int</span>&gt;&amp; years)</span></span>&#123;<br>    <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i=<span class="hljs-number">0</span>;i&lt;years.size();++i)&#123;<br>        <span class="hljs-keyword">if</span>(isLearYear(years[i])) ++ans;<br>    &#125;<br>    <span class="hljs-keyword">return</span> ans;<br>&#125;<br></code></pre></div></td></tr></table></figure>
-<p>这样既可以也函数形式在程序里使用isLeapYear(), 又不用在运行时承担额外开销。</p>
-<h2 id="内联函数优缺点"><a href="#内联函数优缺点" class="headerlink" title="内联函数优缺点"></a>内联函数优缺点</h2><blockquote>
-<p>优点</p>
-<ol>
-<li>它通过避免函数调用所带来的开销来提高你程序的运行速度。</li>
-<li>当函数调用发生时，它节省了变量弹栈、压栈的开销。</li>
-<li>它避免了一个函数执行完返回原现场的开销。</li>
-<li>通过将函数声明为内联，你可以把函数定义放在头文件内。</li>
-</ol>
-</blockquote>
-<blockquote>
-<p>缺点：</p>
-<ol>
-<li>因为代码的扩展，内联函数增大了可执行程序的体积。</li>
-<li>C++内联函数的展开是中编译阶段，这就意味着如果你的内联函数发生了改动，那么就需要重新编译代码。</li>
-</ol>
-</blockquote>
-<h2 id="什么时候函数适合定义为内联"><a href="#什么时候函数适合定义为内联" class="headerlink" title="什么时候函数适合定义为内联"></a>什么时候函数适合定义为内联</h2><ol>
-<li>函数尽量的短(&lt;10行)</li>
-<li>函数简单(不能有复杂语句while,switch等)</li>
-<li>内联函数不能递归调用自己</li>
-<li>inline可以修饰虚函数,但是虚函数发生动态绑定时不能内联</li>
-</ol>
-<blockquote>
-<p>注意:</p>
-<ol>
-<li>inline声明是对编译器的一种<strong>建议</strong>,编译器是否觉得采取你的建议取决于函数是否符合内联的有利条件。</li>
-<li>如果<strong>函数体非常大</strong>，那么编译器将忽略函数的内联声明，而将内联函数作为普通函数处理。</li>
-<li>内联函数的实现应该放在.h文件中</li>
-</ol>
-</blockquote>
-<h2 id="内联函数和宏定义的区别"><a href="#内联函数和宏定义的区别" class="headerlink" title="内联函数和宏定义的区别"></a>内联函数和宏定义的区别</h2><ol>
-<li>宏由预处理器在预处理阶段展开,内联函数是由编译器控制的。</li>
-<li>在编译的时候，内联函数直接被嵌入到目标代码中去，而宏只是一个简单的文本替换。</li>
-<li>内联函数是函数,可以进行诸如类型安全检查、语句是否正确等编译功能。宏不是函数,不具有这样的功能。</li>
-<li>内联函数在运行时可调试，宏定义不可以。</li>
-</ol>
-<h2 id="编译器默认内联的情况"><a href="#编译器默认内联的情况" class="headerlink" title="编译器默认内联的情况"></a>编译器默认内联的情况</h2><p>在类体内定义的函数会被编译器自动声明为内联函数。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/qg-whz/p/4641479.html">博客-C++内联函数</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.runoob.com/cplusplus/cpp-inline-functions.html">菜鸟教程-C++内联函数</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/chengxuyuancc/archive/2013/04/04/2999844.html">博客-宏定义和内联函数区别</a></li>
-</ol>
+<p>点击生成TMP字体文件，给TMP_Text组件挂上新鲜出炉的像素字体资源。<br>报了警告”The character used for Underline is not available in font。”</p>
+<p>查了一波资料，发现不是什么大事，可以在TMP设置里面关掉警告。<br><img src="https://cdn.jsdelivr.net/gh/cnImpulse/SRPG@develop/Images/03.png" srcset="/img/loading.gif" alt="TMP Set"></p>
+<p>前面两个设置默认字体资源和备选字体资源,下面可以设置关闭报警。</p>
+<h2 id="编码问题"><a href="#编码问题" class="headerlink" title="编码问题"></a>编码问题</h2><p>开始测试，发现了一个问题，在TMP_Text下输入汉字是正常的像素字体，但是输入的数字和英文字母不是，这意味着没有在像素字体资源下找到字符，所以使用的是备选字体资源。</p>
+<p>但是打开<strong>gb2312.txt</strong>发现是有数字和英文字母的，查看了一下刚刚生成字体资源，发现英文字母和汉字的编码是<strong>gb2312</strong>，但是TMP把它当成Unicode处理的，汉字没有问题是因为gb2312和Unicode的汉字编码是相同的。</p>
+<p>解决方法: 又生成了一份小的字体资源，生成的时候Character Set选的是Extender Ascll，将该字体设置为备选字体资源，然后测试一切正常。</p>
 
             </div>
             <hr>
@@ -305,7 +269,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/categories/C-%E6%B7%B1%E5%85%A5%E5%AD%A6%E4%B9%A0/">C++深入学习</a>
+                      <a class="hover-with-bg" href="/categories/%E6%88%98%E6%A3%8B%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">战棋游戏开发</a>
                     
                   </div>
                 
@@ -313,7 +277,7 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/C/">C++</a>
+                      <a class="hover-with-bg" href="/tags/%E6%88%98%E6%A3%8B%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91/">战棋游戏开发</a>
                     
                   </div>
                 
@@ -326,18 +290,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/03/20/2D%E6%B8%B8%E6%88%8F%E7%A5%9E%E5%99%A8-RuleTile/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2D游戏神器-RuleTile</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/02/19/C++%E7%9A%84%E5%A4%9A%E6%80%81%E5%92%8C%E8%99%9A%E5%87%BD%E6%95%B0%E5%8E%9F%E7%90%86/">
-                        <span class="hidden-mobile">C++的多态和虚函数原理</span>
+                      <a href="/2021/10/04/%E6%88%98%E6%A3%8B%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91-%E7%BD%91%E6%A0%BC%E5%9C%B0%E5%9B%BE%E7%AF%87/">
+                        <span class="hidden-mobile">战棋游戏开发-网格地图篇</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
